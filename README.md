@@ -22,7 +22,7 @@ await browser.close()
 
 **You can use returned last scroll position and request/response hooks to handle async content uploading.**
 
-### Also, you can customize `scrollStep` and `scrollDelay`
+### Scrolling options
 
 **`scrollStep {Number}` - Number of pixels to scroll on each step.**
 
