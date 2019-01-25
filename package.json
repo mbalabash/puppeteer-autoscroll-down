@@ -1,0 +1,38 @@
+{
+  "name": "puppeteer-autoscroll-down",
+  "version": "0.1.0",
+  "description": "Small tool for puppeteer which scrolling page to bottom based on Body element.",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint . --cache --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.16.0",
+    "puppeteer": "^1.11.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.(js)": [
+      "yarn eslint",
+      "git add"
+    ]
+  },
+  "keywords": [
+    "puppeteer",
+    "scroll",
+    "dom",
+    "node.js"
+  ],
+  "author": "mbalabash",
+  "license": "MIT"
+}
