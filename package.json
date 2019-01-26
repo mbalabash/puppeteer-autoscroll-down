@@ -32,6 +32,11 @@
     "dom",
     "node.js"
   ],
+  "homepage": "https://github.com/mbalabash/puppeteer-autoscroll-down/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mbalabash/puppeteer-autoscroll-down"
+  },
   "author": "mbalabash",
   "license": "MIT"
 }
