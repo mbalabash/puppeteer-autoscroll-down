@@ -4,6 +4,18 @@
 
 **See https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy**
 
+### Install:
+
+```js
+npm i puppeteer-autoscroll-down
+```
+
+or
+
+```js
+yarn add puppeteer-autoscroll-down
+```
+
 ### Example:
 
 ```js
