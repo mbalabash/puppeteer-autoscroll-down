@@ -1,6 +1,6 @@
 {
   "name": "puppeteer-autoscroll-down",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Small tool for puppeteer which scrolling page to bottom based on Body element.",
   "main": "index.js",
   "scripts": {
