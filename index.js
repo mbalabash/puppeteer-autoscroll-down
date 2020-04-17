@@ -9,6 +9,8 @@ async function scrollPageToBottom(page, scrollStep = 250, scrollDelay = 100) {
   const lastPosition = await page.evaluate(
     async (step, delay) => {
       const getScrollHeight = (element) => {
+        if (!element) return 0
+
         const { scrollHeight, offsetHeight, clientHeight } = element
         return Math.max(scrollHeight, offsetHeight, clientHeight)
       }
