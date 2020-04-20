@@ -4,16 +4,22 @@
   "description": "Small tool for puppeteer which scrolling page to bottom based on Body element.",
   "main": "index.js",
   "scripts": {
+    "prettier": "prettier --write -l '**/*.js'",
     "eslint": "eslint . --cache --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "puppeteer": ">1.x"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
-    "eslint-plugin-import": "^2.20.1",
-    "husky": "^4.2.3",
-    "lint-staged": "^10.0.8",
-    "prettier": "^1.19.1"
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.8.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.6",
+    "prettier": "^2.0.4"
   },
   "husky": {
     "hooks": {
@@ -22,7 +28,8 @@
   },
   "lint-staged": {
     "*.(js)": [
-      "yarn eslint",
+      "prettier --write",
+      "eslint --cache",
       "git add"
     ]
   },

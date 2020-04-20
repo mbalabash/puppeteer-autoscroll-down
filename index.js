@@ -34,7 +34,7 @@ async function scrollPageToBottom(page, scrollStep = 250, scrollDelay = 100) {
       return position
     },
     scrollStep,
-    scrollDelay,
+    scrollDelay
   )
   return lastPosition
 }

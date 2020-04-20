@@ -1,10 +1,8 @@
 const path = require('path')
-const puppeteer = require('puppeteer') // eslint-disable-line import/no-extraneous-dependencies
+const puppeteer = require('puppeteer')
 const scrollPageToBottom = require('../index')
 
-;
-
-(async () => {
+;(async () => {
   const browser = await puppeteer.launch({ headless: false })
   const page = await browser.newPage()
   await page.setViewport({ width: 1366, height: 768 })

@@ -1,18 +1,26 @@
 {
-  "extends": ["airbnb-base"],
+  "extends": ["airbnb-base", "prettier", "plugin:jest/recommended"],
+  "plugins": ["jest"],
   "env": {
-    "browser": true,
+    "browser": false,
     "commonjs": true,
     "node": true,
-    "es6": true
+    "es6": true,
+    "jest/globals": true
   },
   "parserOptions": {
     "ecmaVersion": 2018
+  },
+  "globals": {
+    "window": true,
+    "document": true
   },
   "rules": {
     "no-console": "off",
     "no-bitwise": 0,
     "semi": 0,
+    "import/no-unresolved": 0,
+    "import/newline-after-import": 0,
     "import/prefer-default-export": 0,
     "semi-style": 0
   }
