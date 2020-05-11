@@ -1,10 +1,34 @@
-## Small tool for puppeteer which scrolling page to bottom based on Body element
+## Handle infinite scroll on websites by puppeteer
 
-**This package using `window.scrollBy` method for scrolling.**
+**We use [`window.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy) method for scrolling pages.**
 
-**See https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy**
+### Usage
 
-### Install:
+```js
+const browser = await puppeteer.launch()
+const page = await browser.newPage()
+await page.goto(SOME_URL)
+
+const lastPosition = await scrollPageToBottom(page)
+
+await browser.close()
+```
+
+**You can use returned value with request/response hooks to handle async content uploading.**
+
+### Scrolling options
+
+**`scrollStep` - Number of pixels to scroll on each step.**
+
+**`scrollDelay` - A delay between each scroll step in ms.**
+
+```js
+const scrollStep = 250 // default
+const scrollDelay = 100 // default
+const lastPosition = await scrollPageToBottom(page, scrollStep, scrollDelay)
+```
+
+### Install
 
 ```js
 npm i puppeteer-autoscroll-down
@@ -16,32 +40,6 @@ or
 yarn add puppeteer-autoscroll-down
 ```
 
-### Example:
+### Contributing
 
-```js
-const browser = await puppeteer.launch({ headless: false })
-const page = await browser.newPage()
-await page.setViewport({ width: 1366, height: 768 })
-
-await page.goto('https://en.wikipedia.org/wiki/Main_Page')
-const lastPosition = await scrollPageToBottom(page)
-await page.screenshot({ path: path.normalize(`${__dirname}/example.png`) })
-
-console.log(`lastPosition: ${lastPosition}`)
-
-await browser.close()
-```
-
-**You can use returned last scroll position and request/response hooks to handle async content uploading.**
-
-### Scrolling options
-
-**`scrollStep {Number}` - Number of pixels to scroll on each step.**
-
-**`scrollDelay {Number}` - A delay between each scroll step in ms.**
-
-```js
-const scrollStep = 250 // default
-const scrollDelay = 100 // default
-const lastPosition = await scrollPageToBottom(page, scrollStep, scrollDelay)
-```
+Feel free to ask or open an issue.

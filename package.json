@@ -1,7 +1,7 @@
 {
   "name": "puppeteer-autoscroll-down",
   "version": "0.1.5",
-  "description": "Small tool for puppeteer which scrolling page to bottom based on Body element.",
+  "description": "Handle infinite scroll on websites by puppeteer",
   "main": "index.js",
   "scripts": {
     "prettier": "prettier --write -l '**/*.js'",
@@ -37,8 +37,8 @@
   "keywords": [
     "puppeteer",
     "scroll",
-    "dom",
-    "node.js"
+    "infinite",
+    "dom"
   ],
   "homepage": "https://github.com/mbalabash/puppeteer-autoscroll-down/blob/master/README.md",
   "repository": {
