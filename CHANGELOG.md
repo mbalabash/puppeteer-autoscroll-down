@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.1.7
+
+- Fixed npm security alert. Upgraded project packages.
+
 ## 0.1.6
 
 - Fixed npm security alert. Upgraded project packages.
