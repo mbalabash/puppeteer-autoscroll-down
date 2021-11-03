@@ -3,11 +3,12 @@
  * @param {Object} page Puppeteer page object
  * @param {Number} scrollStep Number of pixels to scroll on each step
  * @param {Number} scrollDelay A delay between each scroll step
+ * @param {Number} maxScrollSteps Max number of steps to scroll
  * @returns {Number} Last scroll position
  */
-async function scrollPageToBottom(page, scrollStep = 250, scrollDelay = 100) {
+async function scrollPageToBottom(page, scrollStep = 250, scrollDelay = 100, maxScrollSteps = null) {
   const lastPosition = await page.evaluate(
-    async (step, delay) => {
+    async (step, delay, maxSteps) => {
       const getScrollHeight = (element) => {
         if (!element) return 0
 
@@ -24,7 +25,8 @@ async function scrollPageToBottom(page, scrollStep = 250, scrollDelay = 100) {
           window.scrollBy(0, step)
           count += step
 
-          if (count >= availableScrollHeight) {
+          if (count >= availableScrollHeight ||
+            (maxSteps !== null && count >= step * maxSteps)) {
             clearInterval(intervalId)
             resolve(count)
           }
@@ -34,7 +36,8 @@ async function scrollPageToBottom(page, scrollStep = 250, scrollDelay = 100) {
       return position
     },
     scrollStep,
-    scrollDelay
+    scrollDelay,
+    maxScrollSteps
   )
   return lastPosition
 }
