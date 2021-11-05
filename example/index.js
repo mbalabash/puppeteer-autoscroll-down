@@ -9,7 +9,7 @@ const scrollPageToBottom = require('../index')
 
   await page.goto('https://en.wikipedia.org/wiki/Main_Page')
   const lastPosition = await scrollPageToBottom(page)
-  await page.screenshot({ path: path.normalize(`${__dirname}/example.png`) })
+  await page.screenshot({ path: path.normalize(`${__dirname}/example.jpg`) })
 
   console.log(`lastPosition: ${lastPosition}`)
 

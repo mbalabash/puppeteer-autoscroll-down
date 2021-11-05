@@ -1,4 +1,8 @@
 import { Page } from 'puppeteer'
-export type LastScrollPosition = number
 
-export declare function scrollPageToBottom(page: Page, scrollStep?: number, scrollDelay?: number, maxScrollSteps?: number): Promise<LastScrollPosition>
+export declare function scrollPageToBottom(
+  page: Page,
+  scrollSize?: number,
+  scrollDelay?: number,
+  scrollStepsLimit?: number
+): Promise<number>

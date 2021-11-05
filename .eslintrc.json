@@ -1,12 +1,10 @@
 {
-  "extends": ["airbnb-base", "prettier", "plugin:jest/recommended"],
-  "plugins": ["jest"],
+  "extends": ["airbnb-base", "prettier"],
   "env": {
     "browser": false,
     "commonjs": true,
     "node": true,
-    "es6": true,
-    "jest/globals": true
+    "es6": true
   },
   "parserOptions": {
     "ecmaVersion": 2018

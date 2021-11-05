@@ -9,18 +9,18 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
-    "puppeteer": ">3.x"
+    "puppeteer": ">5.x"
   },
   "devDependencies": {
-    "@types/puppeteer": "^5.4.3",
-    "eslint": "^7.27.0",
+    "@types/puppeteer": "^5.4.4",
+    "eslint": "^8.1.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.23.3",
-    "eslint-plugin-jest": "^24.3.6",
-    "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
-    "prettier": "^2.3.0"
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jest": "^25.2.3",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "prettier": "^2.4.1"
   },
   "husky": {
     "hooks": {

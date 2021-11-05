@@ -1,45 +1,53 @@
 /**
  * Scrolling page to bottom based on Body element
  * @param {Object} page Puppeteer page object
- * @param {Number} scrollStep Number of pixels to scroll on each step
- * @param {Number} scrollDelay A delay between each scroll step
- * @param {Number} maxScrollSteps Max number of steps to scroll
+ * @param {Number} scrollSize Number of pixels to scroll on each step
+ * @param {Number} scrollDelay Delay after each completed scroll step
+ * @param {Number} scrollStepsLimit Max number of steps to scroll
  * @returns {Number} Last scroll position
  */
-async function scrollPageToBottom(page, scrollStep = 250, scrollDelay = 100, maxScrollSteps = null) {
-  const lastPosition = await page.evaluate(
-    async (step, delay, maxSteps) => {
-      const getScrollHeight = (element) => {
+async function scrollPageToBottom(
+  page,
+  scrollSize = 250,
+  scrollDelay = 100,
+  scrollStepsLimit = null
+) {
+  const lastScrollPosition = await page.evaluate(
+    async (pixelsToScroll, delayAfterStep, stepsLimit) => {
+      const getElementScrollHeight = (element) => {
         if (!element) return 0
-
         const { scrollHeight, offsetHeight, clientHeight } = element
         return Math.max(scrollHeight, offsetHeight, clientHeight)
       }
 
-      const position = await new Promise((resolve) => {
-        let count = 0
+      const scrollToBottom = (resolve) => {
+        let lastPosition = 0
+
         const intervalId = setInterval(() => {
           const { body } = document
-          const availableScrollHeight = getScrollHeight(body)
+          const availableScrollHeight = getElementScrollHeight(body)
 
-          window.scrollBy(0, step)
-          count += step
+          window.scrollBy(0, pixelsToScroll)
+          lastPosition += pixelsToScroll
 
-          if (count >= availableScrollHeight ||
-            (maxSteps !== null && count >= step * maxSteps)) {
+          if (
+            lastPosition >= availableScrollHeight ||
+            (stepsLimit !== null && lastPosition >= pixelsToScroll * stepsLimit)
+          ) {
             clearInterval(intervalId)
-            resolve(count)
+            resolve(lastPosition)
           }
-        }, delay)
-      })
+        }, delayAfterStep)
+      }
 
-      return position
+      return new Promise(scrollToBottom)
     },
-    scrollStep,
+    scrollSize,
     scrollDelay,
-    maxScrollSteps
+    scrollStepsLimit
   )
-  return lastPosition
+
+  return lastScrollPosition
 }
 
 module.exports = scrollPageToBottom
