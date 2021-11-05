@@ -1,7 +1,7 @@
 {
   "name": "puppeteer-autoscroll-down",
-  "version": "0.1.7",
-  "description": "Handle infinite scroll on websites by puppeteer",
+  "version": "0.2.0",
+  "description": "Handle infinite scroll on websites with puppeteer",
   "main": "index.js",
   "scripts": {
     "prettier": "prettier --write -l '**/*.js'",
@@ -36,9 +36,9 @@
   },
   "keywords": [
     "puppeteer",
-    "scroll",
+    "parsing",
     "infinite",
-    "dom"
+    "scroll"
   ],
   "homepage": "https://github.com/mbalabash/puppeteer-autoscroll-down/blob/master/README.md",
   "repository": {

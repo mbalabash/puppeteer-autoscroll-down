@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.2.0
+
+- Added `scrollStepsLimit` option, which allows you to control how many scrolls you want to make (for cases when you want to parse only recent information).
+- Fixed npm security alert. Upgraded project packages.
+
 ## 0.1.7
 
 - Fixed npm security alert. Upgraded project packages.

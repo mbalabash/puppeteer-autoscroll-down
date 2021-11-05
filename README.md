@@ -1,6 +1,6 @@
-## Handle infinite scroll on websites by puppeteer
+## Handle infinite scroll on websites with puppeteer
 
-**We use [`window.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy) method for scrolling pages.**
+Small puppeteer tool which makes your parsing experience a little bit better
 
 ### Usage
 
@@ -18,15 +18,15 @@ await browser.close()
 
 ### Scrolling options
 
-**`scrollStep` - Number of pixels to scroll on each step.**
+**`scrollSize` - Number of pixels to scroll on each step** `[default: 250]`.
 
-**`scrollDelay` - A delay between each scroll step in ms.**
+**`scrollDelay` - Delay in ms after each completed scroll step** `[default: 100]`.
 
-```js
-const scrollStep = 250 // default
-const scrollDelay = 100 // default
-const lastPosition = await scrollPageToBottom(page, scrollStep, scrollDelay)
-```
+**`scrollStepsLimit` - Max number of steps to scroll** `[default: null]`.
+
+### How?
+
+**We take available scroll height from `body` element and then using [`window.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy) method to scroll pages.**
 
 ### Install
 
