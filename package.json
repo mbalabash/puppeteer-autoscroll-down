@@ -3,48 +3,56 @@
   "version": "0.2.0",
   "description": "Handle infinite scroll on websites with puppeteer",
   "main": "index.js",
+  "types": "./index.d.ts",
+  "engines": {
+    "node": ">=12"
+  },
+  "license": "MIT",
+  "author": "mbalabash <maksim.balabash@gmail.com>",
   "scripts": {
-    "prettier": "prettier --write -l '**/*.js'",
-    "eslint": "eslint . --cache --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "unit": "tsm node_modules/uvu/bin.js test/",
+    "test": "yarn unit && eslint . && check-dts"
   },
-  "peerDependencies": {
-    "puppeteer": ">5.x"
+  "eslintConfig": {
+    "extends": "@logux/eslint-config"
   },
+  "eslintIgnore": [
+    "example/index.js"
+  ],
+  "prettier": {
+    "arrowParens": "avoid",
+    "quoteProps": "as-needed",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "dependencies": {},
   "devDependencies": {
+    "@logux/eslint-config": "^46.1.0",
     "@types/puppeteer": "^5.4.4",
+    "check-dts": "^0.6.5",
     "eslint": "^8.1.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-jest": "^25.2.3",
-    "husky": "^7.0.4",
-    "lint-staged": "^11.2.6",
-    "prettier": "^2.4.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.(js)": [
-      "prettier --write",
-      "eslint --cache",
-      "git add"
-    ]
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prefer-let": "^3.0.1",
+    "eslint-plugin-promise": "^5.2.0",
+    "find-chrome-bin": "^0.1.0",
+    "puppeteer-core": "^12.0.1",
+    "tsm": "^2.2.1",
+    "typescript": "^4.5.3",
+    "uvu": "^0.5.2"
   },
   "keywords": [
+    "headless-chrome",
     "puppeteer",
     "parsing",
     "infinite",
     "scroll"
   ],
-  "homepage": "https://github.com/mbalabash/puppeteer-autoscroll-down/blob/master/README.md",
+  "homepage": "https://github.com/mbalabash/puppeteer-autoscroll-down#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/mbalabash/puppeteer-autoscroll-down"
-  },
-  "author": "mbalabash",
-  "license": "MIT"
+  }
 }

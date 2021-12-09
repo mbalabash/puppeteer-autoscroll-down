@@ -1,34 +1,37 @@
-## Handle infinite scroll on websites with puppeteer
+# Handle infinite scroll on websites with puppeteer
 
 Small puppeteer tool which makes your parsing experience a little bit better
 
-### Usage
+## Usage
+
+**`size` - Number of pixels to scroll on each step** `[default: 250]`.
+
+**`delay` - Delay in ms after each completed scroll step** `[default: 100]`.
+
+**`stepsLimit` - Max number of steps to scroll** `[default: null]`.
 
 ```js
 const browser = await puppeteer.launch()
 const page = await browser.newPage()
-await page.goto(SOME_URL)
+await page.goto('https://en.wikipedia.org/wiki/Main_Page')
 
-const lastPosition = await scrollPageToBottom(page)
+const lastPosition = await scrollPageToBottom(page, {
+  size: 500,
+  delay: 250
+})
 
 await browser.close()
 ```
 
-**You can use returned value with request/response hooks to handle async content uploading.**
+### Async content loading
 
-### Scrolling options
+**You can use returned value with request/response hooks to handle async content loading.**
 
-**`scrollSize` - Number of pixels to scroll on each step** `[default: 250]`.
+```js
 
-**`scrollDelay` - Delay in ms after each completed scroll step** `[default: 100]`.
+```
 
-**`scrollStepsLimit` - Max number of steps to scroll** `[default: null]`.
-
-### How?
-
-**We take available scroll height from `body` element and then using [`window.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy) method to scroll pages.**
-
-### Install
+## Install
 
 ```js
 npm i puppeteer-autoscroll-down
@@ -40,6 +43,6 @@ or
 yarn add puppeteer-autoscroll-down
 ```
 
-### Contributing
+## License
 
-Feel free to ask or open an issue.
+MIT
