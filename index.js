@@ -1,25 +1,25 @@
 async function scrollPageToBottom(page, { size = 250, delay = 100, stepsLimit = null }) {
-  const lastScrollPosition = await page.evaluate(
-    async (pixelsToScroll, delayAfterStep, stepsLimit) => {
-      const getElementScrollHeight = element => {
+  let lastScrollPosition = await page.evaluate(
+    async (pixelsToScroll, delayAfterStep, limit) => {
+      let getElementScrollHeight = element => {
         if (!element) return 0
-        const { scrollHeight, offsetHeight, clientHeight } = element
+        let { scrollHeight, offsetHeight, clientHeight } = element
         return Math.max(scrollHeight, offsetHeight, clientHeight)
       }
 
-      const scrollToBottom = resolve => {
+      let scrollToBottom = resolve => {
         let lastPosition = 0
 
-        const intervalId = setInterval(() => {
-          const { body } = document
-          const availableScrollHeight = getElementScrollHeight(body)
+        let intervalId = setInterval(() => {
+          let { body } = document
+          let availableScrollHeight = getElementScrollHeight(body)
 
           window.scrollBy(0, pixelsToScroll)
           lastPosition += pixelsToScroll
 
           if (
             lastPosition >= availableScrollHeight ||
-            (stepsLimit !== null && lastPosition >= pixelsToScroll * stepsLimit)
+            (limit !== null && lastPosition >= pixelsToScroll * limit)
           ) {
             clearInterval(intervalId)
             resolve(lastPosition)
