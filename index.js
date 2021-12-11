@@ -37,4 +37,4 @@ async function scrollPageToBottom(page, { size = 250, delay = 100, stepsLimit = 
   return lastScrollPosition
 }
 
-module.exports = scrollPageToBottom
+module.exports = { scrollPageToBottom }
