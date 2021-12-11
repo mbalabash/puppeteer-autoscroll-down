@@ -2,6 +2,12 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.0
+
+- Moved to named export. Use `const { scrollPageToBottom } = require('puppeteer-autoscroll-down')`.
+
+- Renamed and moved options to object. Use `scrollPageToBottom(page, { size: 500, delay: 250, stepsLimit: 10 })`.
+
 ## 0.2.0
 
 - Added `scrollStepsLimit` option, which allows you to control how many scrolls you want to make (for cases when you want to parse only recent information).
