@@ -11,7 +11,7 @@
   "author": "mbalabash <maksim.balabash@gmail.com>",
   "scripts": {
     "unit": "tsm node_modules/uvu/bin.js test/",
-    "test": "yarn unit && eslint . && check-dts"
+    "test": "eslint . && check-dts && yarn unit"
   },
   "eslintConfig": {
     "extends": "@logux/eslint-config"
