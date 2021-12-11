@@ -11,9 +11,12 @@ Small puppeteer tool which makes your parsing experience a little bit better
 **`stepsLimit` - Max number of steps to scroll** `[default: null]`.
 
 ```js
+const puppeteer = require('puppeteer')
+const { scrollPageToBottom } = require('puppeteer-autoscroll-down')
+
 const browser = await puppeteer.launch()
 const page = await browser.newPage()
-await page.goto('https://en.wikipedia.org/wiki/Main_Page')
+await page.goto('http://example.com')
 
 const lastPosition = await scrollPageToBottom(page, {
   size: 500,
@@ -28,7 +31,24 @@ await browser.close()
 **You can use returned value with request/response hooks to handle async content loading.**
 
 ```js
+const puppeteer = require('puppeteer')
+const { scrollPageToBottom } = require('puppeteer-autoscroll-down')
 
+const browser = await puppeteer.launch()
+const page = await browser.newPage()
+await page.goto('http://example.com')
+
+let isLoadingAvailable = true // Your condition-to-stop
+
+while (isLoadingAvailable) {
+  await scrollPageToBottom(page, { size: 500 })
+  await page.waitForResponse(
+    response => response.url() === 'http://example.com' && response.status() === 200
+  )
+  isLoadingAvailable = false // Update your condition-to-stop value
+}
+
+await browser.close()
 ```
 
 ## Install
