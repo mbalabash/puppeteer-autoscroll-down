@@ -1,4 +1,4 @@
-async function scrollPageToBottom(page, { size = 250, delay = 100, stepsLimit = null }) {
+async function scrollPageToBottom(page, { size = 250, delay = 100, stepsLimit = null } = {}) {
   let lastScrollPosition = await page.evaluate(
     async (pixelsToScroll, delayAfterStep, limit) => {
       let getElementScrollHeight = element => {
