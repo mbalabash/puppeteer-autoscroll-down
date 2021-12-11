@@ -22,5 +22,4 @@ yarn-debug.log*
 yarn-error.log*
 
 test/chrome
-test/stub
 !test/chrome/.gitkeep
