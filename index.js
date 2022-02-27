@@ -1,40 +1,48 @@
-async function scrollPageToBottom(page, { size = 250, delay = 100, stepsLimit = null } = {}) {
-  let lastScrollPosition = await page.evaluate(
-    async (pixelsToScroll, delayAfterStep, limit) => {
-      let getElementScrollHeight = element => {
-        if (!element) return 0
-        let { scrollHeight, offsetHeight, clientHeight } = element
-        return Math.max(scrollHeight, offsetHeight, clientHeight)
-      }
+function scrollPage(scrollDirection) {
+  return async (page, { size = 250, delay = 100, stepsLimit = null } = {}) => {
+    let lastScrollPosition = await page.evaluate(
+      async (pixelsToScroll, delayAfterStep, limit, direction) => {
+        let getElementScrollHeight = element => {
+          if (!element) return 0
+          let { scrollHeight, offsetHeight, clientHeight } = element
+          return Math.max(scrollHeight, offsetHeight, clientHeight)
+        }
 
-      let scrollToBottom = resolve => {
-        let lastPosition = 0
+        let initialScrollPosition = window.pageYOffset
+        let availableScrollHeight = getElementScrollHeight(document.body)
+        let lastPosition = direction === 'bottom' ? 0 : initialScrollPosition
 
-        let intervalId = setInterval(() => {
-          let { body } = document
-          let availableScrollHeight = getElementScrollHeight(body)
+        let scrollFn = resolve => {
+          let intervalId = setInterval(() => {
+            window.scrollBy(0, direction === 'bottom' ? pixelsToScroll : -pixelsToScroll)
+            lastPosition += direction === 'bottom' ? pixelsToScroll : -pixelsToScroll
 
-          window.scrollBy(0, pixelsToScroll)
-          lastPosition += pixelsToScroll
+            if (
+              (direction === 'bottom' && lastPosition >= availableScrollHeight) ||
+              (direction === 'bottom' &&
+                limit !== null &&
+                lastPosition >= pixelsToScroll * limit) ||
+              (direction === 'top' && lastPosition <= 0) ||
+              (direction === 'top' &&
+                limit !== null &&
+                lastPosition <= initialScrollPosition - pixelsToScroll * limit)
+            ) {
+              clearInterval(intervalId)
+              resolve(lastPosition)
+            }
+          }, delayAfterStep)
+        }
 
-          if (
-            lastPosition >= availableScrollHeight ||
-            (limit !== null && lastPosition >= pixelsToScroll * limit)
-          ) {
-            clearInterval(intervalId)
-            resolve(lastPosition)
-          }
-        }, delayAfterStep)
-      }
+        return new Promise(scrollFn)
+      },
+      size,
+      delay,
+      stepsLimit,
+      scrollDirection
+    )
 
-      return new Promise(scrollToBottom)
-    },
-    size,
-    delay,
-    stepsLimit
-  )
-
-  return lastScrollPosition
+    return lastScrollPosition
+  }
 }
 
-module.exports = { scrollPageToBottom }
+module.exports = { scrollPageToBottom: scrollPage('bottom'), scrollPageToTop: scrollPage('top') }
