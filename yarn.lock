@@ -743,10 +743,10 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-find-chrome-bin@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/find-chrome-bin/-/find-chrome-bin-1.0.0.tgz#4160aeb59bf98135136707912df745ab09b6e275"
-  integrity sha512-oGg0LNAbulv+9sS+CoZyqywNnGIFqtNPXCNNpfXhtIMKQKmJIX5YJmt0/0ldxeXfbgGG7RDZ4WCoz+4QkG2n8g==
+find-chrome-bin@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/find-chrome-bin/-/find-chrome-bin-0.1.0.tgz#9fa3e6f86c275762c6d8be9da9af71e6fef05373"
+  integrity sha512-XoFZwaEn1R3pE6zNG8kH64l2e093hgB9+78eEKPmJK0o1EXEou+25cEWdtu2qq4DBQPDSe90VJAWVI2Sz9pX6Q==
 
 find-up@^2.1.0:
   version "2.1.0"
