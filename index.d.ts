@@ -21,7 +21,7 @@ export type Options = {
 }
 
 /**
- * Scrolling page to bottom
+ * Scrolling page to the bottom
  *
  * @example
  * ```js
@@ -36,3 +36,20 @@ export type Options = {
  * @returns {Promise<number>}
  */
 export declare function scrollPageToBottom(page: Page, options: Options): Promise<number>
+
+/**
+ * Scrolling page to the top
+ *
+ * @example
+ * ```js
+ * const browser = await puppeteer.launch()
+ * const page = await browser.newPage()
+ * await page.goto("https://en.wikipedia.org/wiki/Main_Page")
+ * const lastPosition = await scrollPageToTop(page)
+ * await browser.close()
+ * ```
+ * @param {Page} page
+ * @param {Options} options
+ * @returns {Promise<number>}
+ */
+export declare function scrollPageToTop(page: Page, options: Options): Promise<number>

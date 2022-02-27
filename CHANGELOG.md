@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.1.0
+
+- Added `scrollPageToTop`.
+
 ## 1.0.0
 
 - Moved to named export. Use `const { scrollPageToBottom } = require('puppeteer-autoscroll-down')`.
