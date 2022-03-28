@@ -96,7 +96,7 @@ test('should scroll page to top', async () => {
     assert.is(lastPosition > 0, true)
 
     lastPosition = await scrollPageToTop(page)
-    assert.is(lastPosition === 0, true)
+    assert.is(lastPosition <= 0, true)
   } catch (error) {
     console.error(error) // eslint-disable-line no-console
   } finally {
