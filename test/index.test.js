@@ -3,7 +3,7 @@ const { join } = require('path')
 const assert = require('uvu/assert')
 const puppeteer = require('puppeteer-core')
 const { findChrome } = require('find-chrome-bin')
-const { PUPPETEER_REVISIONS } = require('puppeteer-core/lib/cjs/puppeteer/revisions')
+const { PUPPETEER_REVISIONS } = require('puppeteer-core/lib/cjs/puppeteer/revisions.js')
 
 const { scrollPageToBottom, scrollPageToTop } = require('../index')
 
