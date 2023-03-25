@@ -4,16 +4,16 @@ on:
 jobs:
   full:
     runs-on: ubuntu-latest
-    name: OS ubuntu-latest Node.js 12
+    name: OS ubuntu-latest Node.js 19
     steps:
       - name: Install Chrome
         uses: browser-actions/setup-chrome@latest     
       - name: Checkout the repository
         uses: actions/checkout@v2
-      - name: Install Node.js 12
+      - name: Install Node.js 19
         uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 19
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Run unit tests
