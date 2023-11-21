@@ -1,5 +1,3 @@
-import { Page } from 'puppeteer-core'
-
 export type Options = {
   /**
    * Number of pixels to scroll on each step
@@ -31,11 +29,11 @@ export type Options = {
  * const lastPosition = await scrollPageToBottom(page)
  * await browser.close()
  * ```
- * @param {Page} page
+ * @param {Object} page
  * @param {Options} options
  * @returns {Promise<number>}
  */
-export declare function scrollPageToBottom(page: Page, options: Options): Promise<number>
+export declare function scrollPageToBottom(page: object, options: Options): Promise<number>
 
 /**
  * Scrolling page to the top
@@ -48,8 +46,8 @@ export declare function scrollPageToBottom(page: Page, options: Options): Promis
  * const lastPosition = await scrollPageToTop(page)
  * await browser.close()
  * ```
- * @param {Page} page
+ * @param {Object} page
  * @param {Options} options
  * @returns {Promise<number>}
  */
-export declare function scrollPageToTop(page: Page, options: Options): Promise<number>
+export declare function scrollPageToTop(page: object, options: Options): Promise<number>

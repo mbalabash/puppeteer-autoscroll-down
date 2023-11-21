@@ -1,5 +1,5 @@
 const { test } = require('uvu')
-const { join } = require('path')
+const { join } = require('node:path')
 const assert = require('uvu/assert')
 const puppeteer = require('puppeteer-core')
 const { findChrome } = require('find-chrome-bin')
@@ -9,11 +9,11 @@ const { scrollPageToBottom, scrollPageToTop } = require('../index')
 
 test('should scroll `regular` page to bottom', async () => {
   let chromeInfo = await findChrome({
-    download: { puppeteer, revision: PUPPETEER_REVISIONS.chromium, path: join(__dirname, 'chrome') }
+    download: { path: join(__dirname, 'chrome'), puppeteer, revision: PUPPETEER_REVISIONS.chromium }
   })
   let browser = await puppeteer.launch({
-    headless: true,
-    executablePath: chromeInfo.executablePath
+    executablePath: chromeInfo.executablePath,
+    headless: true
   })
   let isScrolledToBottom = false
   let lastPosition = 0
@@ -37,11 +37,11 @@ test('should scroll `regular` page to bottom', async () => {
 
 test('should scroll `async content page` to bottom', async () => {
   let chromeInfo = await findChrome({
-    download: { puppeteer, revision: PUPPETEER_REVISIONS.chromium, path: join(__dirname, 'chrome') }
+    download: { path: join(__dirname, 'chrome'), puppeteer, revision: PUPPETEER_REVISIONS.chromium }
   })
   let browser = await puppeteer.launch({
-    headless: true,
-    executablePath: chromeInfo.executablePath
+    executablePath: chromeInfo.executablePath,
+    headless: true
   })
   let isScrolledToBottom = false
   let lastPosition = 0
@@ -76,11 +76,11 @@ test('should scroll `async content page` to bottom', async () => {
 
 test('should scroll page to top', async () => {
   let chromeInfo = await findChrome({
-    download: { puppeteer, revision: PUPPETEER_REVISIONS.chromium, path: join(__dirname, 'chrome') }
+    download: { path: join(__dirname, 'chrome'), puppeteer, revision: PUPPETEER_REVISIONS.chromium }
   })
   let browser = await puppeteer.launch({
-    headless: true,
-    executablePath: chromeInfo.executablePath
+    executablePath: chromeInfo.executablePath,
+    headless: true
   })
   let lastPosition = 0
 

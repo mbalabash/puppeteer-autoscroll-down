@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.1.3
+
+- Fixed type compatibility issue between puppeteer-core and puppeteer.
+- Upgraded devDependencies.
+
 ## 1.1.2
 
 - Upgraded devDependencies.

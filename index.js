@@ -1,10 +1,10 @@
 function scrollPage(scrollDirection) {
-  return async (page, { size = 250, delay = 100, stepsLimit = null } = {}) => {
+  return async (page, { delay = 100, size = 250, stepsLimit = null } = {}) => {
     let lastScrollPosition = await page.evaluate(
       async (pixelsToScroll, delayAfterStep, limit, direction) => {
         let getElementScrollHeight = element => {
           if (!element) return 0
-          let { scrollHeight, offsetHeight, clientHeight } = element
+          let { clientHeight, offsetHeight, scrollHeight } = element
           return Math.max(scrollHeight, offsetHeight, clientHeight)
         }
 
