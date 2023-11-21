@@ -1,11 +1,13 @@
-const { test } = require('uvu')
-const { join } = require('node:path')
-const assert = require('uvu/assert')
-const puppeteer = require('puppeteer-core')
-const { findChrome } = require('find-chrome-bin')
-const { PUPPETEER_REVISIONS } = require('puppeteer-core/lib/cjs/puppeteer/revisions.js')
+import { findChrome } from 'find-chrome-bin'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url';
+import puppeteer from 'puppeteer-core'
+import { PUPPETEER_REVISIONS } from 'puppeteer-core/lib/cjs/puppeteer/revisions.js'
+import { test } from 'uvu';
+import * as assert from 'uvu/assert';
 
-const { scrollPageToBottom, scrollPageToTop } = require('../index')
+import { scrollPageToBottom, scrollPageToTop } from '../index.js'
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 test('should scroll `regular` page to bottom', async () => {
   let chromeInfo = await findChrome({

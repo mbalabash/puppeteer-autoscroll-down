@@ -116,7 +116,7 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@puppeteer/browsers@1.8.0":
+"@puppeteer/browsers@1.8.0", "@puppeteer/browsers@^1.8.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@puppeteer/browsers/-/browsers-1.8.0.tgz#fb6ee61de15e7f0e67737aea9f9bab1512dbd7d8"
   integrity sha512-TkRHIV6k2D8OlUe8RtG+5jgOF/H98Myx0M6AOafC8DdNVOFiBSFa5cpRDtpm8LXOa9sVwe0+e6Q3FC56X/DZfg==
@@ -145,9 +145,9 @@
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
 "@types/node@*":
-  version "20.9.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.9.2.tgz#002815c8e87fe0c9369121c78b52e800fadc0ac6"
-  integrity sha512-WHZXKFCEyIUJzAwh3NyyTHYSR35SevJ6mZ1nWwJafKtiQbqRTIKSRcw3Ma3acqgsent3RRDqeVwpHntMk+9irg==
+  version "20.9.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.9.3.tgz#e089e1634436f676ff299596c9531bd2b59fffc6"
+  integrity sha512-nk5wXLAXGBKfrhLB0cyHGbSqopS+nz0BUgZkUQqSHSSgdee0kssp1IAqlQOu333bW+gMNs2QREx7iynm19Abxw==
   dependencies:
     undici-types "~5.26.4"
 
@@ -159,9 +159,9 @@
     puppeteer "*"
 
 "@types/semver@^7.5.0":
-  version "7.5.5"
-  resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.5.tgz#deed5ab7019756c9c90ea86139106b0346223f35"
-  integrity sha512-+d+WYC1BxJ6yVOgUgzK8gWvp5qF8ssV5r4nsDcZWKRWcDQLQ619tvWAxJQYGgBrO1MnLJC7a5GtiYsAoQ47dJg==
+  version "7.5.6"
+  resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.6.tgz#c65b2bfce1bec346582c07724e3f8c1017a20339"
+  integrity sha512-dn1l8LaMea/IjDoHNd9J52uBbInB796CDffS6VdIxvqYCPSG0V0DzHp76GpaWnlhg88uYyPbXCDIowa86ybd5A==
 
 "@types/yauzl@^2.9.1":
   version "2.10.3"
@@ -1144,10 +1144,12 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-find-chrome-bin@1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/find-chrome-bin/-/find-chrome-bin-1.0.5.tgz#45ba5c6599ece2ee9546e520475f29fd6f28d5c8"
-  integrity sha512-hz7lQfY012+IkiK4dJCp+kPCGurGLjbHhl9ngFeqr55ihS0eBhdKqCQamvHJvT59HSZB1tRORfMfRgTOpkLdxQ==
+find-chrome-bin@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/find-chrome-bin/-/find-chrome-bin-2.0.0.tgz#c9d51e3aa929fe7530e369d3face39389c341e58"
+  integrity sha512-Uwsw1Orpl1wXW0GuafLhKGBrwqFTB0SPqru0vOvHMeO1xnP9pvdqlb1BP36kbcpXal2sZhcW10DEPT/U2DWL2w==
+  dependencies:
+    "@puppeteer/browsers" "^1.8.0"
 
 find-up@^5.0.0:
   version "5.0.0"

@@ -45,4 +45,6 @@ function scrollPage(scrollDirection) {
   }
 }
 
-module.exports = { scrollPageToBottom: scrollPage('bottom'), scrollPageToTop: scrollPage('top') }
+export const scrollPageToBottom = scrollPage('bottom');
+
+export const scrollPageToTop = scrollPage('top');

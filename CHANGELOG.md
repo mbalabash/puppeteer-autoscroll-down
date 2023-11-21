@@ -2,8 +2,9 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## 1.1.3
+## 2.0.0
 
+- Dropped support for CommonJS
 - Fixed type compatibility issue between puppeteer-core and puppeteer.
 - Upgraded devDependencies.
 
