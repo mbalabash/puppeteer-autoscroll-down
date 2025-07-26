@@ -4,47 +4,28 @@
   "description": "Handle infinite scroll on websites with puppeteer",
   "main": "index.js",
   "types": "./index.d.ts",
+  "type": "module",
   "engines": {
     "node": ">=18"
   },
-  "type": "module",
-  "license": "MIT",
-  "author": "mbalabash <maksim.balabash@gmail.com>",
   "scripts": {
-    "unit": "tsm node_modules/uvu/bin.js test/",
-    "test": "eslint . && yarn unit"
+    "test": "tsm node_modules/uvu/bin.js test/"
   },
-  "eslintConfig": {
-    "extends": "@logux/eslint-config"
+  "devDependencies": {
+    "@types/puppeteer": "5.4.7",
+    "find-chrome-bin": "2.0.2",
+    "prettier": "3.6.2",
+    "puppeteer-core": "24.15.0",
+    "tsm": "2.3.0",
+    "typescript": "5.8.3",
+    "uvu": "0.5.6"
   },
-  "eslintIgnore": [
-    "example/index.js"
-  ],
   "prettier": {
     "arrowParens": "avoid",
     "quoteProps": "as-needed",
     "semi": false,
     "singleQuote": true,
     "trailingComma": "none"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "@logux/eslint-config": "^52.0.2",
-    "@types/puppeteer": "^7.0.4",
-    "eslint": "^8.54.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-n": "^16.3.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-node-import": "^1.0.4",
-    "eslint-plugin-perfectionist": "^2.4.0",
-    "eslint-plugin-prefer-let": "^3.0.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "find-chrome-bin": "2.0.0",
-    "puppeteer-core": "^21.5.2",
-    "tsm": "^2.3.0",
-    "typescript": "^5.3.2",
-    "uvu": "^0.5.6"
   },
   "keywords": [
     "headless-chrome",
@@ -57,5 +38,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mbalabash/puppeteer-autoscroll-down"
-  }
+  },
+  "license": "MIT",
+  "author": "mbalabash <maksim.balabash@gmail.com>"
 }

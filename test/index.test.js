@@ -48,6 +48,8 @@ test('should scroll `async content page` to bottom', async () => {
   let isScrolledToBottom = false
   let lastPosition = 0
 
+  const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+
   try {
     let page = await browser.newPage()
     await page.goto(`file://${join(__dirname, 'stub', 'async-content-page.html')}`)
@@ -60,7 +62,7 @@ test('should scroll `async content page` to bottom', async () => {
         document.querySelector('#loader').classList.contains('hide')
       ))
       lastPosition = await scrollPageToBottom(page, { size: 100 })
-      await page.waitForTimeout(1500)
+      await delay(1500)
     }
 
     isScrolledToBottom = await page.evaluate(() => isInViewport(document.querySelector('#test'))) // eslint-disable-line no-undef
