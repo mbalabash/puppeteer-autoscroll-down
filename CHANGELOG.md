@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.1
+
+- Reduced package size: reduced code size by 32% and prevented publishing unnecessary files to npm.
+- Upgraded devDependencies.
+
 ## 2.0.0
 
 - Dropped support for CommonJS

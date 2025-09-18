@@ -1,50 +1,39 @@
-function scrollPage(scrollDirection) {
+function scrollPage(dir) {
   return async (page, { delay = 100, size = 250, stepsLimit = null } = {}) => {
-    let lastScrollPosition = await page.evaluate(
-      async (pixelsToScroll, delayAfterStep, limit, direction) => {
-        let getElementScrollHeight = element => {
-          if (!element) return 0
-          let { clientHeight, offsetHeight, scrollHeight } = element
-          return Math.max(scrollHeight, offsetHeight, clientHeight)
-        }
+    return await page.evaluate(
+      (pixels, delayAfterStep, limit, direction) => {
+        const isDown = direction === 'bottom'
+        const initial = window.pageYOffset
+        const maxHeight = Math.max(
+          document.body.scrollHeight,
+          document.body.offsetHeight,
+          document.body.clientHeight
+        )
+        let pos = isDown ? 0 : initial
 
-        let initialScrollPosition = window.pageYOffset
-        let availableScrollHeight = getElementScrollHeight(document.body)
-        let lastPosition = direction === 'bottom' ? 0 : initialScrollPosition
+        return new Promise(resolve => {
+          const interval = setInterval(() => {
+            window.scrollBy(0, isDown ? pixels : -pixels)
+            pos += isDown ? pixels : -pixels
 
-        let scrollFn = resolve => {
-          let intervalId = setInterval(() => {
-            window.scrollBy(0, direction === 'bottom' ? pixelsToScroll : -pixelsToScroll)
-            lastPosition += direction === 'bottom' ? pixelsToScroll : -pixelsToScroll
+            const reachedEnd = isDown ? pos >= maxHeight : pos <= 0
+            const reachedLimit =
+              limit && (isDown ? pos >= pixels * limit : pos <= initial - pixels * limit)
 
-            if (
-              (direction === 'bottom' && lastPosition >= availableScrollHeight) ||
-              (direction === 'bottom' &&
-                limit !== null &&
-                lastPosition >= pixelsToScroll * limit) ||
-              (direction === 'top' && lastPosition <= 0) ||
-              (direction === 'top' &&
-                limit !== null &&
-                lastPosition <= initialScrollPosition - pixelsToScroll * limit)
-            ) {
-              clearInterval(intervalId)
-              resolve(lastPosition)
+            if (reachedEnd || reachedLimit) {
+              clearInterval(interval)
+              resolve(pos)
             }
           }, delayAfterStep)
-        }
-
-        return new Promise(scrollFn)
+        })
       },
       size,
       delay,
       stepsLimit,
-      scrollDirection
+      dir
     )
-
-    return lastScrollPosition
   }
 }
 
-export const scrollPageToBottom = scrollPage('bottom');
-
-export const scrollPageToTop = scrollPage('top');
+export const scrollPageToBottom = scrollPage('bottom')
+export const scrollPageToTop = scrollPage('top')
